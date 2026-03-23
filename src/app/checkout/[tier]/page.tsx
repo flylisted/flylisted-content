@@ -18,7 +18,7 @@ const tiers: Record<
   growth: {
     name: "Growth",
     price: "$4,500/mo",
-    stripeLink: "https://buy.stripe.com/cNicN51wQ5mB31U9o36kg0h",
+    stripeLink: "https://buy.stripe.com/9B600j0sMbKZ9qi7fV6kg0j",
   },
   authority: {
     name: "Authority",
