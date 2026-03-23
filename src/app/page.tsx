@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-/* ───────────────────────────── PRICING DATA ───────────────────────────── */
+/* ───────────────────────────── DATA ───────────────────────────── */
 
 const packages = [
   {
@@ -9,22 +9,15 @@ const packages = [
     annualPrice: "$2,700",
     tagline:
       "Boost your exposure with our Video Starter package. Affordable and effective!",
-    badge: null,
-    gradient: "from-rose-100 to-orange-100",
-    borderColor: "border-rose-200",
+    featured: false,
     features: [
-      "1–2 Core Content Assets Per Month",
-      "(project feature, brand video, or client testimonial)",
-      "Built for Sales, Not Just Social",
-      "(usable across your website, proposals, and outreach)",
-      "Half-Day Production Session",
-      "(on-site filming of your team, projects, or process)",
-      "Creative Direction + Messaging Support",
-      "(we guide what to say and how to position it)",
-      "Content Repurposed for Multiple Uses",
-      "(cutdowns for social, website, and marketing)",
-      "2 Rounds of Revisions Per Deliverable",
-      "Still Photography Included",
+      { text: "1-2 Core Content Assets Per Month", sub: "project feature, brand video, or client testimonial" },
+      { text: "Built for Sales, Not Just Social", sub: "usable across your website, proposals, and outreach" },
+      { text: "Half-Day Production Session", sub: "on-site filming of your team, projects, or process" },
+      { text: "Creative Direction + Messaging Support", sub: "we guide what to say and how to position it" },
+      { text: "Content Repurposed for Multiple Uses", sub: "cutdowns for social, website, and marketing" },
+      { text: "2 Rounds of Revisions Per Deliverable", sub: null },
+      { text: "Still Photography Included", sub: null },
     ],
   },
   {
@@ -32,22 +25,17 @@ const packages = [
     price: "$4,500",
     annualPrice: "$3,999",
     tagline: "Content built to drive pipeline, not just presence.",
-    badge: "BEST VALUE",
-    gradient: "from-amber-100 via-yellow-50 to-teal-100",
-    borderColor: "border-teal-300",
+    featured: true,
     features: [
-      "2–3 Core Content Assets",
-      "(case studies, project features, testimonials)",
-      "+ 6–10 Supporting Content Pieces",
-      "(cutdowns, social clips, distribution-ready variations)",
-      "Full Production Session (or 2 half-days)",
-      "Monthly Strategy + Planning Call",
-      "Creative Direction + Messaging Support",
-      "Content Designed for Sales + Marketing Use",
-      "(website, proposals, outreach, ads)",
-      "Repurposed Across Multiple Channels",
-      "2 Rounds of Revisions Per Deliverable",
-      "Still Photography Included",
+      { text: "2-3 Core Content Assets", sub: "case studies, project features, testimonials" },
+      { text: "6-10 Supporting Content Pieces", sub: "cutdowns, social clips, distribution-ready variations" },
+      { text: "Full Production Session (or 2 half-days)", sub: null },
+      { text: "Monthly Strategy + Planning Call", sub: null },
+      { text: "Creative Direction + Messaging Support", sub: null },
+      { text: "Content Designed for Sales + Marketing Use", sub: "website, proposals, outreach, ads" },
+      { text: "Repurposed Across Multiple Channels", sub: null },
+      { text: "2 Rounds of Revisions Per Deliverable", sub: null },
+      { text: "Still Photography Included", sub: null },
     ],
   },
   {
@@ -56,53 +44,27 @@ const packages = [
     annualPrice: "$5,999",
     tagline:
       "A complete content system designed to position your company as the leader in your market.",
-    badge: null,
-    gradient: "from-purple-200 via-violet-100 to-fuchsia-100",
-    borderColor: "border-purple-300",
+    featured: false,
     features: [
-      "3–5 Core Content Assets Per Month",
-      "(case studies, project features, brand authority, leadership content)",
-      "+ 10–20 Supporting Content Pieces",
-      "(short-form cutdowns, social clips, multi-platform variations)",
-      "1–2 Full Production Days Per Month",
-      "(capture multiple projects, team, and brand content at scale)",
-      "Monthly Strategy + Quarterly Content Roadmap",
-      "(planned around business goals, not random content)",
-      "Advanced Creative Direction + Messaging Development",
-      "(we shape how your company is perceived in the market)",
-      "Content Built for Sales, Marketing, and Recruiting",
-      "(website, proposals, outreach, ads, hiring)",
-      "Multi-Channel Content System + Repurposing",
-      "(maximize every shoot across all platforms)",
-      "Priority Editing + Faster Turnaround",
-      "2 Rounds of Revisions Per Deliverable",
-      "Still Photography Included",
+      { text: "3-5 Core Content Assets Per Month", sub: "case studies, project features, brand authority, leadership content" },
+      { text: "10-20 Supporting Content Pieces", sub: "short-form cutdowns, social clips, multi-platform variations" },
+      { text: "1-2 Full Production Days Per Month", sub: "capture multiple projects, team, and brand content at scale" },
+      { text: "Monthly Strategy + Quarterly Content Roadmap", sub: "planned around business goals, not random content" },
+      { text: "Advanced Creative Direction + Messaging", sub: "we shape how your company is perceived in the market" },
+      { text: "Content Built for Sales, Marketing, and Recruiting", sub: "website, proposals, outreach, ads, hiring" },
+      { text: "Multi-Channel Content System + Repurposing", sub: "maximize every shoot across all platforms" },
+      { text: "Priority Editing + Faster Turnaround", sub: null },
+      { text: "2 Rounds of Revisions Per Deliverable", sub: null },
+      { text: "Still Photography Included", sub: null },
     ],
   },
 ];
 
 const howItWorks = [
-  {
-    step: "01",
-    title: "Plan",
-    description: "We align on what actually drives business.",
-  },
-  {
-    step: "02",
-    title: "Capture",
-    description:
-      "We film your business on-site — efficiently and without disruption.",
-  },
-  {
-    step: "03",
-    title: "Produce",
-    description: "We turn footage into polished, ready-to-use content.",
-  },
-  {
-    step: "04",
-    title: "Deliver",
-    description: "You receive content built for social, sales, and marketing.",
-  },
+  { step: "01", title: "Plan", description: "We align on what actually drives business." },
+  { step: "02", title: "Capture", description: "We film your business on-site — efficiently and without disruption." },
+  { step: "03", title: "Produce", description: "We turn footage into polished, ready-to-use content." },
+  { step: "04", title: "Deliver", description: "You receive content built for social, sales, and marketing." },
 ];
 
 const results = [
@@ -117,67 +79,30 @@ const results = [
 
 function NavBar() {
   return (
-    <header className="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link
-          href="https://www.flylisted.com"
-          className="flex items-center gap-2"
-        >
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M50 10 C45 25, 30 35, 20 30 C25 45, 35 55, 50 50 C40 55, 25 50, 15 55 C30 65, 45 65, 50 55 L50 90"
-              stroke="black"
-              strokeWidth="3"
-              fill="none"
-              strokeLinecap="round"
-            />
-            <path
-              d="M50 10 C55 25, 70 35, 80 30 C75 45, 65 55, 50 50"
-              stroke="black"
-              strokeWidth="3"
-              fill="none"
-              strokeLinecap="round"
-            />
+    <header className="w-full bg-white/80 backdrop-blur-xl border-b border-black/5 sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Link href="https://www.flylisted.com" className="flex items-center gap-2">
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 C45 25, 30 35, 20 30 C25 45, 35 55, 50 50 C40 55, 25 50, 15 55 C30 65, 45 65, 50 55 L50 90" stroke="black" strokeWidth="3" fill="none" strokeLinecap="round" />
+            <path d="M50 10 C55 25, 70 35, 80 30 C75 45, 65 55, 50 50" stroke="black" strokeWidth="3" fill="none" strokeLinecap="round" />
           </svg>
-          <span
-            className="text-2xl tracking-wide text-black"
-            style={{ fontFamily: "var(--font-montserrat)" }}
-          >
+          <span className="text-xl font-semibold tracking-tight text-black">
             flylisted
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-8">
-          <Link
-            href="https://www.flylisted.com"
-            className="text-sm tracking-wider text-black/70 hover:text-black transition-colors uppercase"
-            style={{ letterSpacing: "1.28px" }}
-          >
+          <Link href="https://www.flylisted.com" className="text-sm font-medium text-black/50 hover:text-black transition-colors">
             Home
           </Link>
-          <Link
-            href="https://www.flylisted.com/pricing"
-            className="text-sm tracking-wider text-black/70 hover:text-black transition-colors uppercase"
-            style={{ letterSpacing: "1.28px" }}
-          >
+          <Link href="https://www.flylisted.com/pricing" className="text-sm font-medium text-black/50 hover:text-black transition-colors">
             Pricing
           </Link>
-          <Link
-            href="https://www.flylisted.com/commercial-services"
-            className="text-sm tracking-wider text-black/70 hover:text-black transition-colors uppercase"
-            style={{ letterSpacing: "1.28px" }}
-          >
+          <Link href="https://www.flylisted.com/commercial-services" className="text-sm font-medium text-black/50 hover:text-black transition-colors">
             Commercial Services
           </Link>
           <Link
             href="https://www.flylisted.com/book-now"
-            className="text-sm tracking-wider bg-black text-white px-5 py-2.5 rounded hover:bg-gray-800 transition-colors uppercase"
-            style={{ letterSpacing: "1.28px" }}
+            className="text-sm font-semibold ig-gradient-btn text-white px-5 py-2.5 rounded-full"
           >
             Book Now
           </Link>
@@ -187,88 +112,76 @@ function NavBar() {
   );
 }
 
-function PricingCard({ pkg }: { pkg: (typeof packages)[0] }) {
-  const isGrowth = pkg.name === "Growth";
+function CheckIcon({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-5 h-5 rounded-full check-gradient flex items-center justify-center shrink-0 ${className}`}>
+      <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+  );
+}
 
+function PricingCard({ pkg }: { pkg: (typeof packages)[0] }) {
   return (
     <div
-      className={`relative flex flex-col rounded-2xl bg-gradient-to-br ${pkg.gradient} border ${pkg.borderColor} p-8 ${isGrowth ? "md:-mt-4 md:mb-0 shadow-xl ring-2 ring-teal-400/50" : "shadow-lg"} transition-transform hover:-translate-y-1 hover:shadow-2xl`}
+      className={`relative flex flex-col rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 ${
+        pkg.featured
+          ? "bg-white shadow-2xl ring-2 ring-pink-200 scale-[1.02]"
+          : "bg-white shadow-lg hover:shadow-xl"
+      }`}
     >
-      {pkg.badge && (
+      {pkg.featured && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="bg-gradient-to-r from-teal-400 to-cyan-500 text-white text-xs font-bold tracking-widest px-4 py-1.5 rounded-full uppercase shadow-md">
-            {pkg.badge}
+          <span className="ig-gradient-btn text-white text-xs font-bold tracking-widest px-5 py-1.5 rounded-full uppercase shadow-lg">
+            Most Popular
           </span>
         </div>
       )}
 
-      <h3
-        className="text-2xl font-bold text-gray-900 mb-2"
-        style={{ fontFamily: "var(--font-montserrat)" }}
-      >
+      <h3 className="text-lg font-semibold text-black/40 uppercase tracking-wider mb-4">
         {pkg.name}
       </h3>
 
       <div className="mb-1">
-        <span
-          className="text-5xl font-extrabold text-gray-900"
-          style={{ fontFamily: "var(--font-montserrat)" }}
-        >
+        <span className="text-5xl font-bold tracking-tight text-black">
           {pkg.price}
         </span>
-        <span className="text-lg text-gray-600 font-medium">/month</span>
+        <span className="text-lg text-black/40 font-medium">/mo</span>
       </div>
 
-      <p className="text-sm text-rose-600 font-medium mb-4">
+      <p className="text-sm ig-gradient-text font-semibold mb-3">
         {pkg.annualPrice}/mo with annual commitment
       </p>
 
-      <p className="text-sm text-gray-700 italic mb-6 leading-relaxed min-h-[3rem]">
+      <p className="text-sm text-black/50 leading-relaxed mb-8 min-h-[2.5rem]">
         {pkg.tagline}
       </p>
 
-      <div className="border-t border-black/10 pt-5 mb-6 flex-1">
-        <ul className="space-y-1">
-          {pkg.features.map((feature, i) => {
-            const isSubtext = feature.startsWith("(");
-            return (
-              <li
-                key={i}
-                className={
-                  isSubtext
-                    ? "text-xs text-gray-500 ml-6 -mt-1 mb-2"
-                    : "flex items-start gap-2 text-sm text-gray-800"
-                }
-              >
-                {!isSubtext && (
-                  <svg
-                    className="w-4 h-4 text-teal-600 mt-0.5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                )}
-                {feature}
-              </li>
-            );
-          })}
+      <div className="border-t border-black/5 pt-6 mb-8 flex-1">
+        <ul className="space-y-3">
+          {pkg.features.map((feature, i) => (
+            <li key={i}>
+              <div className="flex items-start gap-3">
+                <CheckIcon className="mt-0.5" />
+                <div>
+                  <span className="text-sm font-medium text-black/80">{feature.text}</span>
+                  {feature.sub && (
+                    <p className="text-xs text-black/35 mt-0.5">{feature.sub}</p>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
 
       <button
-        className={`w-full py-3.5 rounded-lg font-semibold text-sm tracking-wide transition-all cursor-pointer ${
-          isGrowth
-            ? "bg-black text-white hover:bg-gray-800 shadow-lg"
-            : "bg-white/80 text-gray-900 border border-gray-300 hover:bg-white hover:border-gray-400"
+        className={`w-full py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all cursor-pointer ${
+          pkg.featured
+            ? "ig-gradient-btn text-white shadow-lg"
+            : "bg-black/5 text-black hover:bg-black/10"
         }`}
-        style={{ fontFamily: "var(--font-montserrat)" }}
       >
         Get Started
       </button>
@@ -285,17 +198,15 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ── HERO ── */}
-        <section className="py-24 md:py-36 px-6 bg-gradient-to-b from-gray-50 to-white">
+        <section className="pt-28 pb-32 md:pt-40 md:pb-44 px-6 ig-pastel-bg">
           <div className="max-w-4xl mx-auto text-center">
-            <h1
-              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              Your On-Site Content Team.
-              <br />
-              Built to Keep Your Business Visible.
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-black leading-[1.08] mb-8">
+              Your On-Site Content Team.{" "}
+              <span className="ig-gradient-text">
+                Built to Keep Your Business Visible.
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-xl md:text-2xl text-black/50 font-normal max-w-2xl mx-auto mb-12 leading-relaxed">
               We show up, capture your business in motion, and turn it into
               consistent content that attracts the right clients — without
               adding work to your plate.
@@ -303,15 +214,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#packages"
-                className="bg-black text-white px-8 py-4 rounded-lg font-semibold text-base tracking-wide hover:bg-gray-800 transition-colors"
-                style={{ fontFamily: "var(--font-montserrat)" }}
+                className="ig-gradient-btn text-white px-10 py-4 rounded-full font-semibold text-lg shadow-lg"
               >
                 Get Started
               </a>
               <a
                 href="#how-it-works"
-                className="text-gray-600 px-8 py-4 font-medium text-base hover:text-black transition-colors"
-                style={{ fontFamily: "var(--font-montserrat)" }}
+                className="text-black/40 px-10 py-4 font-medium text-lg hover:text-black transition-colors"
               >
                 See How It Works
               </a>
@@ -320,47 +229,35 @@ export default function Home() {
         </section>
 
         {/* ── SECTION 1: THE REAL PROBLEM ── */}
-        <section className="py-20 md:py-28 px-6">
+        <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-10"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              You Don&apos;t Need More Ideas.
-              <br />
-              You Need Execution.
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-14 leading-tight">
+              You Don&apos;t Need More Ideas.{" "}
+              <span className="ig-gradient-text">You Need Execution.</span>
             </h2>
-            <div className="space-y-4 text-lg text-gray-600 mb-10">
+            <div className="space-y-6 text-xl md:text-2xl text-black/40 font-normal mb-14">
               <p>You know content matters.</p>
               <p>You don&apos;t have time to consistently create it.</p>
               <p>Your team isn&apos;t built for it.</p>
               <p>And when it does get done — it&apos;s inconsistent.</p>
             </div>
-            <p className="text-xl text-gray-900 font-medium">
+            <p className="text-2xl md:text-3xl font-semibold text-black tracking-tight">
               So your business stays invisible more often than it should.
             </p>
           </div>
         </section>
 
         {/* ── SECTION 2: THE SHIFT ── */}
-        <section className="py-20 md:py-28 px-6 bg-gray-50">
+        <section className="py-28 md:py-36 px-6 ig-pastel-bg">
           <div className="max-w-3xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-8"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              The Businesses That Win
-              <br />
-              Show Up — Consistently.
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-10 leading-tight">
+              The Businesses That Win{" "}
+              <span className="ig-gradient-text">Show Up — Consistently.</span>
             </h2>
-            <p className="text-lg text-gray-600 mb-10">
-              Not when it&apos;s convenient. Not when there&apos;s time. Every
-              month.
+            <p className="text-xl text-black/40 mb-14">
+              Not when it&apos;s convenient. Not when there&apos;s time. Every month.
             </p>
-            <p className="text-lg text-gray-700 font-medium mb-6">
-              They&apos;ve built systems that:
-            </p>
-            <div className="space-y-3">
+            <div className="space-y-5">
               {[
                 "Capture real work",
                 "Showcase real expertise",
@@ -368,9 +265,9 @@ export default function Home() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="flex items-center justify-center gap-3 text-lg text-gray-800"
+                  className="flex items-center justify-center gap-4 text-xl text-black/70 font-medium"
                 >
-                  <div className="w-2 h-2 bg-black rounded-full shrink-0" />
+                  <div className="w-2 h-2 rounded-full check-gradient shrink-0" />
                   {item}
                 </div>
               ))}
@@ -379,19 +276,16 @@ export default function Home() {
         </section>
 
         {/* ── SECTION 3: THE SOLUTION ── */}
-        <section className="py-20 md:py-28 px-6">
+        <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              We Handle Everything.
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-tight">
+              We Handle{" "}
+              <span className="ig-gradient-text">Everything.</span>
             </h2>
-            <p className="text-lg text-gray-600 mb-10">
-              We don&apos;t just create content — we take ownership of the
-              entire process.
+            <p className="text-xl text-black/40 mb-16">
+              We don&apos;t just create content — we take ownership of the entire process.
             </p>
-            <div className="space-y-4 text-left max-w-xl mx-auto mb-12">
+            <div className="space-y-5 text-left max-w-lg mx-auto mb-14">
               {[
                 "We come to your business monthly",
                 "We film your team, process, and projects",
@@ -399,55 +293,36 @@ export default function Home() {
                 "We produce content ready for every platform",
                 "We repurpose everything for maximum reach",
               ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <svg
-                    className="w-5 h-5 text-teal-600 mt-0.5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-lg text-gray-800">{item}</span>
+                <div key={item} className="flex items-start gap-4">
+                  <CheckIcon className="mt-1" />
+                  <span className="text-lg text-black/70">{item}</span>
                 </div>
               ))}
             </div>
-            <p className="text-xl text-gray-900 font-semibold">
-              You run your business. We make sure it&apos;s seen.
+            <p className="text-2xl md:text-3xl font-semibold text-black tracking-tight">
+              You run your business.{" "}
+              <span className="ig-gradient-text">We make sure it&apos;s seen.</span>
             </p>
           </div>
         </section>
 
         {/* ── SECTION 4: HOW IT WORKS ── */}
-        <section id="how-it-works" className="py-20 md:py-28 px-6 bg-gray-50">
+        <section id="how-it-works" className="py-28 md:py-36 px-6 ig-pastel-bg">
           <div className="max-w-5xl mx-auto">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-16 text-center"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              Built to Be Simple.
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-20 text-center leading-tight">
+              Built to Be{" "}
+              <span className="ig-gradient-text">Simple.</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               {howItWorks.map((step) => (
                 <div key={step.step} className="text-center">
-                  <div
-                    className="text-5xl font-bold text-gray-200 mb-4"
-                    style={{ fontFamily: "var(--font-montserrat)" }}
-                  >
+                  <div className="step-number text-6xl font-bold mb-4">
                     {step.step}
                   </div>
-                  <h3
-                    className="text-xl font-bold text-gray-900 mb-3"
-                    style={{ fontFamily: "var(--font-montserrat)" }}
-                  >
+                  <h3 className="text-xl font-bold text-black mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-black/40 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -457,21 +332,19 @@ export default function Home() {
         </section>
 
         {/* ── SECTION 5: WHAT YOU'RE GETTING ── */}
-        <section className="py-20 md:py-28 px-6">
+        <section className="py-28 md:py-36 px-6">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2
-                className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
-                style={{ fontFamily: "var(--font-montserrat)" }}
-              >
-                A Monthly Content System.
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-tight">
+                A Monthly{" "}
+                <span className="ig-gradient-text">Content System.</span>
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl text-black/40 max-w-2xl mx-auto">
                 Not random videos. Not one-off shoots. A structured system that
                 compounds over time.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {[
                 "On-site filming of your business",
                 "Short-form content (Reels, TikTok, Shorts)",
@@ -479,52 +352,33 @@ export default function Home() {
                 "Messaging + creative direction",
                 "Multi-platform content usage",
               ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <svg
-                    className="w-5 h-5 text-teal-600 mt-0.5 shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  <span className="text-lg text-gray-800">{item}</span>
+                <div key={item} className="flex items-start gap-4">
+                  <CheckIcon className="mt-1" />
+                  <span className="text-lg text-black/70">{item}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-8 max-w-3xl mx-auto">
-              <p className="text-gray-700 font-medium mb-3 ml-8">
-                Assets for:
-              </p>
-              <div className="flex flex-wrap gap-3 ml-8">
-                {["Social", "Sales", "Marketing", "Recruiting"].map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {["Social", "Sales", "Marketing", "Recruiting"].map((tag) => (
+                <span
+                  key={tag}
+                  className="pricing-highlight text-black/60 px-6 py-2.5 rounded-full text-sm font-semibold border border-black/5"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ── SECTION 6: PACKAGES ── */}
-        <section id="packages" className="py-20 md:py-28 px-6 bg-gray-50">
-          <div className="max-w-4xl mx-auto text-center mb-14">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              Choose Your Level of Visibility
+        <section id="packages" className="py-28 md:py-36 px-6 ig-pastel-bg">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-5 leading-tight">
+              Choose Your Level of{" "}
+              <span className="ig-gradient-text">Visibility</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-black/40 max-w-2xl mx-auto">
               Whether you need to stay consistent or scale aggressively, we
               structure content around your business goals.
             </p>
@@ -534,64 +388,42 @@ export default function Home() {
               <PricingCard key={pkg.name} pkg={pkg} />
             ))}
           </div>
-          <div className="max-w-4xl mx-auto mt-10">
-            <p className="text-xs text-gray-400 text-center leading-relaxed">
-              *Each package includes a guaranteed on-site shoot duration. Final
-              deliverables and raw footage output are estimated based on that
-              shoot time and the creative requirements discussed. Additional
-              deliverables or extended footage needs may incur added costs.
-            </p>
-          </div>
+          <p className="text-xs text-black/25 text-center mt-10 max-w-3xl mx-auto leading-relaxed">
+            *Each package includes a guaranteed on-site shoot duration. Final
+            deliverables and raw footage output are estimated based on that shoot
+            time and the creative requirements discussed.
+          </p>
         </section>
 
         {/* ── SECTION 7: WHY THIS WORKS ── */}
-        <section className="py-20 md:py-28 px-6">
+        <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-8"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              Consistency Builds Authority.
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-10 leading-tight">
+              Consistency Builds{" "}
+              <span className="ig-gradient-text">Authority.</span>
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-4">
+            <p className="text-xl text-black/40 leading-relaxed mb-4">
               The businesses that show up regularly are the ones people remember,
               trust, and hire.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              This isn&apos;t about posting more. It&apos;s about being present
-              — all the time.
+            <p className="text-xl text-black/40 leading-relaxed">
+              This isn&apos;t about posting more. It&apos;s about being present — all the time.
             </p>
           </div>
         </section>
 
         {/* ── SECTION 8: RESULTS ── */}
-        <section className="py-20 md:py-28 px-6 bg-gray-50">
+        <section className="py-28 md:py-36 px-6 ig-pastel-bg">
           <div className="max-w-3xl mx-auto">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              What This Actually Does
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-16 text-center leading-tight">
+              What This{" "}
+              <span className="ig-gradient-text">Actually Does</span>
             </h2>
-            <div className="space-y-5 max-w-xl mx-auto">
+            <div className="space-y-6 max-w-xl mx-auto">
               {results.map((item) => (
                 <div key={item} className="flex items-start gap-4">
-                  <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center shrink-0 mt-0.5">
-                    <svg
-                      className="w-3.5 h-3.5 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={3}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span className="text-lg text-gray-800">{item}</span>
+                  <CheckIcon className="mt-1" />
+                  <span className="text-lg text-black/70 font-medium">{item}</span>
                 </div>
               ))}
             </div>
@@ -599,18 +431,14 @@ export default function Home() {
         </section>
 
         {/* ── SECTION 9: PRIMARY CTA ── */}
-        <section className="py-20 md:py-28 px-6 bg-black text-white">
+        <section className="py-28 md:py-36 px-6 bg-black">
           <div className="max-w-3xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-8"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-10 leading-tight">
               Ready to Get Started?
             </h2>
             <a
               href="#packages"
-              className="inline-block bg-white text-black px-10 py-4 rounded-lg font-semibold text-base tracking-wide hover:bg-gray-100 transition-colors"
-              style={{ fontFamily: "var(--font-montserrat)" }}
+              className="inline-block ig-gradient-btn text-white px-12 py-4 rounded-full font-semibold text-lg shadow-lg"
             >
               Get Started
             </a>
@@ -618,22 +446,19 @@ export default function Home() {
         </section>
 
         {/* ── SECTION 10: LOWER FUNNEL ── */}
-        <section className="py-20 md:py-28 px-6">
+        <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
-              style={{ fontFamily: "var(--font-montserrat)" }}
-            >
-              Want to Talk It Through First?
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-tight">
+              Want to Talk It{" "}
+              <span className="ig-gradient-text">Through First?</span>
             </h2>
-            <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
+            <p className="text-xl text-black/40 mb-12 max-w-xl mx-auto">
               We&apos;ll walk you through the process and help you decide what
               makes the most sense for your business.
             </p>
             <Link
               href="https://www.flylisted.com/book-now"
-              className="inline-block bg-black text-white px-10 py-4 rounded-lg font-semibold text-base tracking-wide hover:bg-gray-800 transition-colors"
-              style={{ fontFamily: "var(--font-montserrat)" }}
+              className="inline-block bg-black text-white px-12 py-4 rounded-full font-semibold text-lg hover:bg-black/80 transition-all"
             >
               Book a Call
             </Link>
@@ -642,20 +467,17 @@ export default function Home() {
       </main>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-gray-50 border-t border-gray-100 py-8 px-6">
+      <footer className="border-t border-black/5 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <span
-            className="text-lg tracking-wide text-gray-600"
-            style={{ fontFamily: "var(--font-montserrat)" }}
-          >
+          <span className="text-lg font-semibold tracking-tight text-black/30">
             flylisted
           </span>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-black/25">
             &copy; {new Date().getFullYear()} Flylisted. All rights reserved.
           </p>
           <Link
             href="https://www.flylisted.com"
-            className="text-sm text-gray-500 hover:text-black transition-colors"
+            className="text-sm text-black/30 hover:text-black transition-colors"
           >
             Back to flylisted.com &rarr;
           </Link>

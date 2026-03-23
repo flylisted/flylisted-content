@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Montserrat, Hind } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const hind = Hind({
-  variable: "--font-hind",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
-  title: "B2B Monthly Content Packages | Flylisted",
+  title: "Monthly Content | Flylisted",
   description:
-    "Content systems built to generate pipeline, not just views. Monthly video and content packages for commercial clients.",
+    "Your on-site content team. We show up, capture your business in motion, and turn it into consistent content that attracts the right clients.",
 };
 
 export default function RootLayout({
@@ -26,8 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${hind.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-hind)" }}>
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <body
+        className="min-h-full flex flex-col"
+        style={{ fontFamily: "var(--font-inter)" }}
+      >
         {children}
       </body>
     </html>
