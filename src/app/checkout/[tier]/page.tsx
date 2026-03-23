@@ -69,9 +69,23 @@ export default function CheckoutPage() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
+
+    // Send lead data to HubSpot
+    try {
+      await fetch("/api/hubspot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          package: tier.name,
+        }),
+      });
+    } catch {
+      // Don't block checkout if HubSpot fails
+    }
 
     // Build Stripe link with prefilled email
     const url = new URL(tier.stripeLink);
