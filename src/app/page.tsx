@@ -176,15 +176,16 @@ function PricingCard({ pkg }: { pkg: (typeof packages)[0] }) {
         </ul>
       </div>
 
-      <button
-        className={`w-full py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all cursor-pointer ${
+      <Link
+        href={`/checkout/${pkg.name.toLowerCase()}`}
+        className={`block w-full py-3.5 rounded-full font-semibold text-sm tracking-wide transition-all text-center ${
           pkg.featured
             ? "ig-gradient-btn text-white shadow-lg"
             : "bg-black/5 text-black hover:bg-black/10"
         }`}
       >
         Get Started
-      </button>
+      </Link>
     </div>
   );
 }
