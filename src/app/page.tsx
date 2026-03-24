@@ -425,7 +425,7 @@ export default function Home() {
               structure content around your business goals.
             </p>
           </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {packages.map((pkg) => (
               <PricingCard key={pkg.name} pkg={pkg} />
             ))}
