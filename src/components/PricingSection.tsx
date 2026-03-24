@@ -7,9 +7,9 @@ const packages = [
   {
     name: "Foundation",
     monthlyPrice: "$3,000",
-    annualPrice: "$2,700",
+    annualPrice: "$2,699",
     monthlyRaw: 3000,
-    annualRaw: 2700,
+    annualRaw: 2699,
     tagline:
       "Boost your exposure with our Video Starter package. Affordable and effective!",
     featured: false,
@@ -79,9 +79,7 @@ function CheckIcon({ className = "" }: { className?: string }) {
 
 function PricingCard({ pkg, isAnnual }: { pkg: (typeof packages)[0]; isAnnual: boolean }) {
   const price = isAnnual ? pkg.annualPrice : pkg.monthlyPrice;
-  const savings = isAnnual
-    ? `Save $${((pkg.monthlyRaw - pkg.annualRaw) * 12).toLocaleString()}/yr`
-    : null;
+  const savingsPercent = Math.round(((pkg.monthlyRaw - pkg.annualRaw) / pkg.monthlyRaw) * 100);
 
   return (
     <div
@@ -110,9 +108,9 @@ function PricingCard({ pkg, isAnnual }: { pkg: (typeof packages)[0]; isAnnual: b
         <span className="text-lg text-black/40 font-medium">/mo</span>
       </div>
 
-      {isAnnual && savings ? (
+      {isAnnual ? (
         <p className="text-sm ig-gradient-text font-semibold mb-3">
-          {savings}
+          Save {savingsPercent}% with annual commitment
         </p>
       ) : (
         <p className="text-sm text-black/30 font-medium mb-3">
@@ -185,22 +183,13 @@ export default function PricingSection() {
           </button>
           <button
             onClick={() => setIsAnnual(true)}
-            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
               isAnnual
                 ? "ig-gradient-btn text-white shadow-md"
                 : "text-black/40 hover:text-black/60"
             }`}
           >
             Annually
-            <span
-              className={`text-xs font-bold px-2 py-0.5 rounded-full transition-all duration-300 ${
-                isAnnual
-                  ? "bg-white/20 text-white"
-                  : "bg-gradient-to-r from-orange-100 to-pink-100 text-pink-600"
-              }`}
-            >
-              Save 10%
-            </span>
           </button>
         </div>
       </div>
