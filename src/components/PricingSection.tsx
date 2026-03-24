@@ -336,8 +336,8 @@ export default function PricingSection() {
       </div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-        {packages.map((pkg) => (
-          <PricingCard key={pkg.name} pkg={pkg} isAnnual={isAnnual} />
+        {packages.map((pkg, i) => (
+          <PricingCard key={pkg.name} pkg={pkg} isAnnual={isAnnual} cardIndex={i} />
         ))}
       </div>
 
