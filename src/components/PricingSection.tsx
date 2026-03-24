@@ -109,13 +109,16 @@ function PricingCard({ pkg, isAnnual }: { pkg: (typeof packages)[0]; isAnnual: b
       </div>
 
       {isAnnual ? (
-        <p className="text-sm ig-gradient-text font-semibold mb-3">
-          Save {savingsPercent}% with annual commitment
-        </p>
+        <div className="mb-3">
+          <p className="text-sm ig-gradient-text font-semibold">
+            Save {savingsPercent}%
+          </p>
+          <p className="text-xs text-black/30 font-medium">
+            billed annually
+          </p>
+        </div>
       ) : (
-        <p className="text-sm text-black/30 font-medium mb-3">
-          {pkg.annualPrice}/mo with annual commitment
-        </p>
+        <div className="mb-3 h-[2.5rem]" />
       )}
 
       <p className="text-sm text-black/50 leading-relaxed mb-8 min-h-[2.5rem]">
