@@ -69,65 +69,109 @@ const packages = [
 
 /* ── Flip digit animation ── */
 
+function seededShuffle(arr: number[], seed: number): number[] {
+  const shuffled = [...arr];
+  let s = seed;
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    s = (s * 16807 + 0) % 2147483647;
+    const j = s % (i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 function FlipChar({ char, delay }: { char: string; delay: number }) {
   const [displayChar, setDisplayChar] = useState(char);
-  const [isFlipping, setIsFlipping] = useState(false);
+  const [nextChar, setNextChar] = useState(char);
+  const [flipping, setFlipping] = useState(false);
   const prevChar = useRef(char);
 
   useEffect(() => {
     if (prevChar.current !== char) {
-      const timer = setTimeout(() => {
-        setIsFlipping(true);
-        // Halfway through the flip, swap the character
-        const swapTimer = setTimeout(() => {
-          setDisplayChar(char);
-        }, 150);
-        // End the flip
-        const endTimer = setTimeout(() => {
-          setIsFlipping(false);
-        }, 300);
-        return () => {
-          clearTimeout(swapTimer);
-          clearTimeout(endTimer);
-        };
-      }, delay);
       prevChar.current = char;
-      return () => clearTimeout(timer);
+      setNextChar(char);
+      const timers: ReturnType<typeof setTimeout>[] = [];
+
+      // After random delay, start the flip
+      timers.push(setTimeout(() => {
+        setFlipping(true);
+      }, delay));
+
+      // Fixed 180ms later: swap the visible char and reset
+      // This is the consistent "mechanical" part of the flip
+      timers.push(setTimeout(() => {
+        setDisplayChar(char);
+        setFlipping(false);
+      }, delay + 180));
+
+      return () => timers.forEach(clearTimeout);
     }
   }, [char, delay]);
 
-  const isDigit = /[0-9$,]/.test(char);
-
   return (
     <span
-      className="inline-block relative"
-      style={{
-        minWidth: isDigit ? undefined : "0.1em",
-      }}
+      className="inline-block relative overflow-hidden"
+      style={{ perspective: "400px" }}
     >
+      {/* Current / old character — rolls down and out */}
       <span
-        className="inline-block transition-transform duration-300 ease-in-out"
+        className="inline-block"
         style={{
-          transform: isFlipping ? "rotateX(90deg)" : "rotateX(0deg)",
-          transformOrigin: "center bottom",
-          backfaceVisibility: "hidden",
+          transform: flipping ? "translateY(100%) rotateX(-90deg)" : "translateY(0) rotateX(0deg)",
+          opacity: flipping ? 0 : 1,
+          transformOrigin: "top center",
+          transition: flipping
+            ? "transform 0.18s ease-in, opacity 0.12s ease-in"
+            : "none",
         }}
       >
         {displayChar}
       </span>
+      {/* New character — rolls down from top, positioned absolutely */}
+      {flipping && (
+        <span
+          className="absolute inset-0 inline-block"
+          style={{
+            animation: "rollDown 0.22s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+            animationDelay: "0.08s",
+            opacity: 0,
+            transform: "translateY(-100%) rotateX(90deg)",
+            transformOrigin: "bottom center",
+          }}
+        >
+          {nextChar}
+        </span>
+      )}
     </span>
   );
 }
 
-function FlipPrice({ price }: { price: string }) {
-  // Pad prices to same length for consistent animation
-  const maxLen = 6; // "$6,500" is the longest
+function FlipPrice({ price, cardIndex }: { price: string; cardIndex: number }) {
+  const maxLen = 6;
   const padded = price.padStart(maxLen, " ");
+  const [delays, setDelays] = useState<number[]>(() => {
+    const indices = Array.from({ length: maxLen }, (_, i) => i);
+    const shuffled = seededShuffle(indices, cardIndex + 1);
+    return shuffled.map((order) => order * 80);
+  });
+
+  const prevPrice = useRef(price);
+
+  useEffect(() => {
+    if (prevPrice.current !== price) {
+      prevPrice.current = price;
+      // Generate new random delays each time price changes
+      const indices = Array.from({ length: maxLen }, (_, i) => i);
+      const seed = Date.now() + cardIndex;
+      const shuffled = seededShuffle(indices, seed);
+      setDelays(shuffled.map((order) => order * 80));
+    }
+  }, [price, cardIndex]);
 
   return (
-    <span className="inline-flex" style={{ perspective: "400px" }}>
+    <span className="inline-flex" style={{ perspective: "600px" }}>
       {padded.split("").map((char, i) => (
-        <FlipChar key={i} char={char} delay={i * 60} />
+        <FlipChar key={i} char={char} delay={delays[i] ?? i * 80} />
       ))}
     </span>
   );
@@ -143,7 +187,7 @@ function CheckIcon({ className = "" }: { className?: string }) {
   );
 }
 
-function PricingCard({ pkg, isAnnual }: { pkg: (typeof packages)[0]; isAnnual: boolean }) {
+function PricingCard({ pkg, isAnnual, cardIndex }: { pkg: (typeof packages)[0]; isAnnual: boolean; cardIndex: number }) {
   const price = isAnnual ? pkg.annualPrice : pkg.monthlyPrice;
   const savingsPercent = Math.round(((pkg.monthlyRaw - pkg.annualRaw) / pkg.monthlyRaw) * 100);
 
@@ -169,7 +213,7 @@ function PricingCard({ pkg, isAnnual }: { pkg: (typeof packages)[0]; isAnnual: b
 
       <div className="mb-1 overflow-hidden">
         <span className="text-5xl font-bold tracking-tight text-black">
-          <FlipPrice price={price} />
+          <FlipPrice price={price} cardIndex={cardIndex} />
         </span>
         <span className="text-lg text-black/40 font-medium">/mo</span>
       </div>

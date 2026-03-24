@@ -120,3 +120,18 @@ section {
 .check-gradient {
   background: linear-gradient(135deg, #E1306C, #833AB4);
 }
+
+/* Solari board roll-down animation */
+@keyframes rollDown {
+  0% {
+    transform: translateY(-100%) rotateX(90deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotateX(0deg);
+    opacity: 1;
+  }
+}
