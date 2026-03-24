@@ -60,6 +60,14 @@ const packages = [
   },
 ];
 
+/* ───────────────────────────── MEDIA ───────────────────────────── */
+
+const videos = {
+  theRoe: "https://dl.dropboxusercontent.com/scl/fi/kxyni7rdfju6v3zrn6yc0/The-Roe.mp4?rlkey=iu3ojwrocksywqzt55s37c7uf&st=7k253x6b",
+  pinkham: "https://dl.dropboxusercontent.com/scl/fi/1vr9kpe87ainp1oeskubs/Pinkham-Real-Estate-Villa-Hygge.mov?rlkey=asp60g255rsetwb6a4pdh5xx0&st=bgg0i4hw",
+  migis: "https://dl.dropboxusercontent.com/scl/fi/xk11b9za79qa8ieoz9shr/Migis-Photos-Video-Harkness-Inn_Loop-Video.mov?rlkey=o8v7dcttt4wz4awnqgfm8yq2l&st=rjowcg5g",
+};
+
 const howItWorks = [
   { step: "01", title: "Plan", description: "We align on what actually drives business." },
   { step: "02", title: "Capture", description: "We film your business on-site — efficiently and without disruption." },
@@ -109,6 +117,22 @@ function NavBar() {
         </nav>
       </div>
     </header>
+  );
+}
+
+function VideoShowcase({ src, className = "" }: { src: string; className?: string }) {
+  return (
+    <div className={`relative overflow-hidden rounded-2xl shadow-2xl ${className}`}>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full h-full object-cover"
+      >
+        <source src={src} />
+      </video>
+    </div>
   );
 }
 
@@ -227,6 +251,11 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          {/* Hero Video Reel */}
+          <div className="max-w-5xl mx-auto mt-20 px-6">
+            <VideoShowcase src={videos.theRoe} className="aspect-video" />
+          </div>
         </section>
 
         {/* ── SECTION 1: THE REAL PROBLEM ── */}
@@ -258,7 +287,7 @@ export default function Home() {
             <p className="text-xl text-black/40 mb-14">
               Not when it&apos;s convenient. Not when there&apos;s time. Every month.
             </p>
-            <div className="space-y-5">
+            <div className="space-y-5 mb-16">
               {[
                 "Capture real work",
                 "Showcase real expertise",
@@ -272,6 +301,12 @@ export default function Home() {
                   {item}
                 </div>
               ))}
+            </div>
+
+            {/* Showcase Video */}
+            <div className="max-w-4xl mx-auto">
+              <VideoShowcase src={videos.pinkham} className="aspect-video" />
+              <p className="text-sm text-black/25 text-center mt-4">Pinkham Real Estate — Villa Hygge</p>
             </div>
           </div>
         </section>
@@ -368,6 +403,12 @@ export default function Home() {
                   {tag}
                 </span>
               ))}
+            </div>
+
+            {/* Content Example Video */}
+            <div className="mt-16 max-w-3xl mx-auto">
+              <VideoShowcase src={videos.migis} className="aspect-video" />
+              <p className="text-sm text-black/25 text-center mt-4">Harkness Inn — Loop Content</p>
             </div>
           </div>
         </section>
