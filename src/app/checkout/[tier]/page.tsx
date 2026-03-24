@@ -102,35 +102,8 @@ export default function CheckoutPage() {
       {/* Nav */}
       <header className="w-full bg-white/80 backdrop-blur-xl border-b border-black/5 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            href="https://www.flylisted.com"
-            className="flex items-center gap-2"
-          >
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M50 10 C45 25, 30 35, 20 30 C25 45, 35 55, 50 50 C40 55, 25 50, 15 55 C30 65, 45 65, 50 55 L50 90"
-                stroke="black"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-              />
-              <path
-                d="M50 10 C55 25, 70 35, 80 30 C75 45, 65 55, 50 50"
-                stroke="black"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="text-xl font-semibold tracking-tight text-black">
-              flylisted
-            </span>
+          <Link href="https://www.flylisted.com">
+            <img src="/flylisted-logo.png" alt="Flylisted" className="h-10" />
           </Link>
           <Link
             href="/"
