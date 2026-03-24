@@ -81,68 +81,88 @@ function seededShuffle(arr: number[], seed: number): number[] {
 }
 
 function FlipChar({ char, delay, flipKey }: { char: string; delay: number; flipKey: number }) {
-  const [displayChar, setDisplayChar] = useState(char);
-  const [nextChar, setNextChar] = useState(char);
-  const [flipping, setFlipping] = useState(false);
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const topRef = useRef<HTMLSpanElement>(null);
+  const bottomRef = useRef<HTMLSpanElement>(null);
   const prevFlipKey = useRef(flipKey);
+  const [visibleChar, setVisibleChar] = useState(char);
+  const pendingChar = useRef(char);
 
   useEffect(() => {
-    // Trigger on flipKey change — this ensures ALL characters flip, even if char is same
+    pendingChar.current = char;
+  }, [char]);
+
+  useEffect(() => {
     if (prevFlipKey.current !== flipKey) {
       prevFlipKey.current = flipKey;
-      setNextChar(char);
-      const timers: ReturnType<typeof setTimeout>[] = [];
+      const timer = setTimeout(() => {
+        const top = topRef.current;
+        const bottom = bottomRef.current;
+        if (!top || !bottom) return;
 
-      // After random delay, start the flip
-      timers.push(setTimeout(() => {
-        setFlipping(true);
-      }, delay));
+        // Set the new char on the incoming element
+        bottom.textContent = pendingChar.current;
 
-      // Fixed 200ms later: swap the visible char and reset
-      // This is the consistent "mechanical" part — same for every digit
-      timers.push(setTimeout(() => {
-        setDisplayChar(char);
-        setFlipping(false);
-      }, delay + 200));
+        // Reset positions
+        top.style.transition = "none";
+        top.style.transform = "translateY(0%)";
+        top.style.opacity = "1";
+        bottom.style.transition = "none";
+        bottom.style.transform = "translateY(-100%)";
+        bottom.style.opacity = "0";
 
-      return () => timers.forEach(clearTimeout);
+        // Force reflow
+        void top.offsetHeight;
+
+        // Animate out: old rolls down
+        top.style.transition = "transform 0.25s ease-in, opacity 0.2s ease-in";
+        top.style.transform = "translateY(100%)";
+        top.style.opacity = "0";
+
+        // Animate in: new rolls down from top — slight delay for the cascade feel
+        setTimeout(() => {
+          bottom.style.transition = "transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.15s ease-out";
+          bottom.style.transform = "translateY(0%)";
+          bottom.style.opacity = "1";
+        }, 80);
+
+        // After animation completes, swap the visible char to the new one
+        setTimeout(() => {
+          setVisibleChar(pendingChar.current);
+          // Reset: put old char back in position, hide new char
+          top.style.transition = "none";
+          top.style.transform = "translateY(0%)";
+          top.style.opacity = "1";
+          bottom.style.transition = "none";
+          bottom.style.transform = "translateY(-100%)";
+          bottom.style.opacity = "0";
+        }, 400);
+      }, delay);
+
+      return () => clearTimeout(timer);
     }
-  }, [char, delay, flipKey]);
+  }, [flipKey, delay]);
 
   return (
     <span
+      ref={containerRef}
       className="inline-block relative overflow-hidden"
-      style={{ perspective: "400px" }}
     >
-      {/* Current / old character — rolls down and out */}
+      {/* Old character — visible, will roll down and out */}
       <span
+        ref={topRef}
         className="inline-block"
-        style={{
-          transform: flipping ? "translateY(100%) rotateX(-90deg)" : "translateY(0) rotateX(0deg)",
-          opacity: flipping ? 0 : 1,
-          transformOrigin: "top center",
-          transition: flipping
-            ? "transform 0.2s ease-in, opacity 0.14s ease-in"
-            : "none",
-        }}
       >
-        {displayChar}
+        {visibleChar}
       </span>
-      {/* New character — rolls down from top */}
-      {flipping && (
-        <span
-          className="absolute inset-0 inline-block"
-          style={{
-            animation: "rollDown 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-            animationDelay: "0.1s",
-            opacity: 0,
-            transform: "translateY(-100%) rotateX(90deg)",
-            transformOrigin: "bottom center",
-          }}
-        >
-          {nextChar}
-        </span>
-      )}
+      {/* New character — hidden above, will roll down into place */}
+      <span
+        ref={bottomRef}
+        className="absolute left-0 top-0 inline-block"
+        style={{ transform: "translateY(-100%)", opacity: 0 }}
+      >
+        {char}
+      </span>
     </span>
   );
 }
