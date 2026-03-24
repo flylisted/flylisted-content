@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const packages = [
@@ -67,6 +67,72 @@ const packages = [
   },
 ];
 
+/* ── Flip digit animation ── */
+
+function FlipChar({ char, delay }: { char: string; delay: number }) {
+  const [displayChar, setDisplayChar] = useState(char);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const prevChar = useRef(char);
+
+  useEffect(() => {
+    if (prevChar.current !== char) {
+      const timer = setTimeout(() => {
+        setIsFlipping(true);
+        // Halfway through the flip, swap the character
+        const swapTimer = setTimeout(() => {
+          setDisplayChar(char);
+        }, 150);
+        // End the flip
+        const endTimer = setTimeout(() => {
+          setIsFlipping(false);
+        }, 300);
+        return () => {
+          clearTimeout(swapTimer);
+          clearTimeout(endTimer);
+        };
+      }, delay);
+      prevChar.current = char;
+      return () => clearTimeout(timer);
+    }
+  }, [char, delay]);
+
+  const isDigit = /[0-9$,]/.test(char);
+
+  return (
+    <span
+      className="inline-block relative"
+      style={{
+        minWidth: isDigit ? undefined : "0.1em",
+      }}
+    >
+      <span
+        className="inline-block transition-transform duration-300 ease-in-out"
+        style={{
+          transform: isFlipping ? "rotateX(90deg)" : "rotateX(0deg)",
+          transformOrigin: "center bottom",
+          backfaceVisibility: "hidden",
+        }}
+      >
+        {displayChar}
+      </span>
+    </span>
+  );
+}
+
+function FlipPrice({ price }: { price: string }) {
+  // Pad prices to same length for consistent animation
+  const maxLen = 6; // "$6,500" is the longest
+  const padded = price.padStart(maxLen, " ");
+
+  return (
+    <span className="inline-flex" style={{ perspective: "400px" }}>
+      {padded.split("").map((char, i) => (
+        <FlipChar key={i} char={char} delay={i * 60} />
+      ))}
+    </span>
+  );
+}
+
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
     <div className={`w-5 h-5 rounded-full check-gradient flex items-center justify-center shrink-0 ${className}`}>
@@ -101,9 +167,9 @@ function PricingCard({ pkg, isAnnual }: { pkg: (typeof packages)[0]; isAnnual: b
         {pkg.name}
       </h3>
 
-      <div className="mb-1">
-        <span className="text-5xl font-bold tracking-tight text-black transition-all duration-300">
-          {price}
+      <div className="mb-1 overflow-hidden">
+        <span className="text-5xl font-bold tracking-tight text-black">
+          <FlipPrice price={price} />
         </span>
         <span className="text-lg text-black/40 font-medium">/mo</span>
       </div>
