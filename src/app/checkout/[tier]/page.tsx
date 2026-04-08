@@ -10,19 +10,19 @@ const tiers: Record<
   string,
   { name: string; price: string; stripeLink: string }
 > = {
-  foundation: {
-    name: "Foundation",
-    price: "$3,000/mo",
+  starter: {
+    name: "Starter",
+    price: "$999/mo",
     stripeLink: "https://buy.stripe.com/fZu5kD1wQ6qFdGybwb6kg0g",
   },
   growth: {
     name: "Growth",
-    price: "$4,500/mo",
-    stripeLink: "https://buy.stripe.com/9B600j0sMbKZ9qi7fV6kg0j",
+    price: "$1,499/mo",
+    stripeLink: "https://buy.stripe.com/cNicN51wQ5mB31U9o36kg0h",
   },
   authority: {
     name: "Authority",
-    price: "$6,500/mo",
+    price: "$2,699/mo",
     stripeLink: "https://buy.stripe.com/6oU5kDfnG9CR6e68jZ6kg0i",
   },
 };

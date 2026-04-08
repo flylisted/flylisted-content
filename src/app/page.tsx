@@ -2,8 +2,6 @@ import Link from "next/link";
 import NavBar from "@/components/NavBar";
 import PricingSection from "@/components/PricingSection";
 
-/* ───────────────────────────── DATA ───────────────────────────── */
-
 /* ───────────────────────────── MEDIA ───────────────────────────── */
 
 const videos = {
@@ -13,18 +11,18 @@ const videos = {
 };
 
 const howItWorks = [
-  { step: "01", title: "Plan", description: "We align on what actually drives business." },
-  { step: "02", title: "Capture", description: "We film your business on-site — efficiently and without disruption." },
-  { step: "03", title: "Produce", description: "We turn footage into polished, ready-to-use content." },
-  { step: "04", title: "Deliver", description: "You receive content built for social, sales, and marketing." },
+  { step: "01", title: "Book", description: "Pick your plan and lock in your monthly shoot date." },
+  { step: "02", title: "Film", description: "We come to you and capture everything on-site — quick and easy." },
+  { step: "03", title: "Edit", description: "We turn your footage into scroll-stopping reels, ready to post." },
+  { step: "04", title: "Post", description: "You get polished content delivered monthly. Just hit publish." },
 ];
 
 const results = [
-  "You stay visible without thinking about it",
-  "Your brand looks established and credible",
-  "Your content works across every channel",
-  "Your team has assets for sales and marketing",
-  "You attract better clients, more consistently",
+  "You stay visible without lifting a finger",
+  "Your brand looks polished and professional",
+  "Your content works across every platform",
+  "You attract the right audience, consistently",
+  "You stop overthinking what to post",
 ];
 
 /* ───────────────────────────── COMPONENTS ───────────────────────────── */
@@ -67,28 +65,28 @@ export default function Home() {
         <section className="pt-28 pb-32 md:pt-40 md:pb-44 px-6 ig-pastel-bg">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-black leading-[1.08] mb-8">
-              Your On-Site Content Team.{" "}
+              Reels That Make{" "}
               <span className="ig-gradient-text">
-                Built to Keep Your Business Visible.
+                Your Brand Impossible to Ignore.
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-black/50 font-normal max-w-2xl mx-auto mb-12 leading-relaxed">
-              We show up, capture your business in motion, and turn it into
-              consistent content that attracts the right clients — without
-              adding work to your plate.
+              We show up, film you in action, and turn it into
+              scroll-stopping reels — delivered every month, without
+              adding a single thing to your to-do list.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#packages"
                 className="ig-gradient-btn text-white px-10 py-4 rounded-full font-semibold text-lg shadow-lg"
               >
-                Get Started
+                See Plans
               </a>
               <a
                 href="#how-it-works"
                 className="text-black/40 px-10 py-4 font-medium text-lg hover:text-black transition-colors"
               >
-                See How It Works
+                How It Works
               </a>
             </div>
           </div>
@@ -99,21 +97,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── SECTION 1: THE REAL PROBLEM ── */}
+        {/* ── SECTION 1: THE PROBLEM ── */}
         <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-14 leading-tight">
-              You Don&apos;t Need More Ideas.{" "}
-              <span className="ig-gradient-text">You Need Execution.</span>
+              You Know You Need to Post.{" "}
+              <span className="ig-gradient-text">You Just Don&apos;t Have Time.</span>
             </h2>
             <div className="space-y-6 text-xl md:text-2xl text-black/40 font-normal mb-14">
-              <p>You know content matters.</p>
-              <p>You don&apos;t have time to consistently create it.</p>
-              <p>Your team isn&apos;t built for it.</p>
-              <p>And when it does get done — it&apos;s inconsistent.</p>
+              <p>You&apos;re great at what you do.</p>
+              <p>But creating content? That keeps falling to the bottom of the list.</p>
+              <p>And when you do post — it feels rushed, random, or just not you.</p>
             </div>
             <p className="text-2xl md:text-3xl font-semibold text-black tracking-tight">
-              So your business stays invisible more often than it should.
+              Meanwhile, the people showing up consistently are getting all the attention.
             </p>
           </div>
         </section>
@@ -122,17 +119,17 @@ export default function Home() {
         <section className="py-28 md:py-36 px-6 ig-pastel-bg">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-10 leading-tight">
-              The Businesses That Win{" "}
-              <span className="ig-gradient-text">Show Up — Consistently.</span>
+              The Brands That Win{" "}
+              <span className="ig-gradient-text">Show Up Every Day.</span>
             </h2>
             <p className="text-xl text-black/40 mb-14">
-              Not when it&apos;s convenient. Not when there&apos;s time. Every month.
+              Not once a week. Not when inspiration strikes. Consistently.
             </p>
             <div className="space-y-5 mb-16">
               {[
-                "Capture real work",
-                "Showcase real expertise",
-                "Stay in front of the right audience",
+                "They look professional without trying",
+                "They stay top-of-mind with their audience",
+                "They let their work speak for itself — on camera",
               ].map((item) => (
                 <div
                   key={item}
@@ -147,7 +144,6 @@ export default function Home() {
             {/* Showcase Video */}
             <div className="max-w-4xl mx-auto">
               <VideoShowcase src={videos.pinkham} className="aspect-video" />
-              <p className="text-sm text-black/25 text-center mt-4">Pinkham Real Estate — Villa Hygge</p>
             </div>
           </div>
         </section>
@@ -156,19 +152,20 @@ export default function Home() {
         <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-tight">
-              We Handle{" "}
-              <span className="ig-gradient-text">Everything.</span>
+              We Make It{" "}
+              <span className="ig-gradient-text">Effortless.</span>
             </h2>
             <p className="text-xl text-black/40 mb-16">
-              We don&apos;t just create content — we take ownership of the entire process.
+              No filming yourself. No editing. No figuring out what to post.
+              We handle the entire thing.
             </p>
             <div className="space-y-5 text-left max-w-lg mx-auto mb-14">
               {[
-                "We come to your business monthly",
-                "We film your team, process, and projects",
-                "We guide messaging and positioning",
-                "We produce content ready for every platform",
-                "We repurpose everything for maximum reach",
+                "We come to you every month",
+                "We film you and your work on-site",
+                "We handle creative direction and messaging",
+                "We produce ready-to-post reels",
+                "We optimize for every platform",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-4">
                   <CheckIcon className="mt-1" />
@@ -177,8 +174,8 @@ export default function Home() {
               ))}
             </div>
             <p className="text-2xl md:text-3xl font-semibold text-black tracking-tight">
-              You run your business.{" "}
-              <span className="ig-gradient-text">We make sure it&apos;s seen.</span>
+              You do your thing.{" "}
+              <span className="ig-gradient-text">We make sure people see it.</span>
             </p>
           </div>
         </section>
@@ -187,7 +184,7 @@ export default function Home() {
         <section id="how-it-works" className="py-28 md:py-36 px-6 ig-pastel-bg">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-20 text-center leading-tight">
-              Built to Be{" "}
+              Dead{" "}
               <span className="ig-gradient-text">Simple.</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -208,26 +205,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── SECTION 5: WHAT YOU'RE GETTING ── */}
+        {/* ── SECTION 5: WHAT YOU GET ── */}
         <section className="py-28 md:py-36 px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-tight">
-                A Monthly{" "}
-                <span className="ig-gradient-text">Content System.</span>
+                Monthly Reels.{" "}
+                <span className="ig-gradient-text">Done for You.</span>
               </h2>
               <p className="text-xl text-black/40 max-w-2xl mx-auto">
-                Not random videos. Not one-off shoots. A structured system that
-                compounds over time.
+                Not stock templates. Not AI-generated clips. Real content,
+                filmed on-site, edited to perform.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               {[
-                "On-site filming of your business",
-                "Short-form content (Reels, TikTok, Shorts)",
-                "Core brand content (testimonials, projects, authority)",
-                "Messaging + creative direction",
-                "Multi-platform content usage",
+                "On-site filming every month",
+                "Short-form reels (Instagram, TikTok, Shorts)",
+                "Creative direction + messaging",
+                "Professional editing + sound design",
+                "Optimized for each platform",
               ].map((item) => (
                 <div key={item} className="flex items-start gap-4">
                   <CheckIcon className="mt-1" />
@@ -236,7 +233,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              {["Social", "Sales", "Marketing", "Recruiting"].map((tag) => (
+              {["Instagram", "TikTok", "YouTube Shorts", "LinkedIn"].map((tag) => (
                 <span
                   key={tag}
                   className="pricing-highlight text-black/60 px-6 py-2.5 rounded-full text-sm font-semibold border border-black/5"
@@ -249,7 +246,6 @@ export default function Home() {
             {/* Content Example Video */}
             <div className="mt-16 max-w-3xl mx-auto">
               <VideoShowcase src={videos.migis} className="aspect-video" />
-              <p className="text-sm text-black/25 text-center mt-4">Harkness Inn — Loop Content</p>
             </div>
           </div>
         </section>
@@ -261,15 +257,16 @@ export default function Home() {
         <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-10 leading-tight">
-              Consistency Builds{" "}
-              <span className="ig-gradient-text">Authority.</span>
+              Consistency Is the{" "}
+              <span className="ig-gradient-text">Whole Game.</span>
             </h2>
             <p className="text-xl text-black/40 leading-relaxed mb-4">
-              The businesses that show up regularly are the ones people remember,
-              trust, and hire.
+              The brands people remember are the ones that keep showing up.
+              Not louder. Not more often. Just consistently.
             </p>
             <p className="text-xl text-black/40 leading-relaxed">
-              This isn&apos;t about posting more. It&apos;s about being present — all the time.
+              That&apos;s what this is — a system that keeps your brand visible
+              without you having to think about it.
             </p>
           </div>
         </section>
@@ -278,8 +275,8 @@ export default function Home() {
         <section className="py-28 md:py-36 px-6 ig-pastel-bg">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-16 text-center leading-tight">
-              What This{" "}
-              <span className="ig-gradient-text">Actually Does</span>
+              What You{" "}
+              <span className="ig-gradient-text">Actually Get</span>
             </h2>
             <div className="space-y-6 max-w-xl mx-auto">
               {results.map((item) => (
@@ -296,13 +293,13 @@ export default function Home() {
         <section className="py-28 md:py-36 px-6 bg-black">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-10 leading-tight">
-              Ready to Get Started?
+              Ready to Show Up?
             </h2>
             <a
               href="#packages"
               className="inline-block ig-gradient-btn text-white px-12 py-4 rounded-full font-semibold text-lg shadow-lg"
             >
-              Get Started
+              Pick Your Plan
             </a>
           </div>
         </section>
@@ -311,12 +308,12 @@ export default function Home() {
         <section className="py-28 md:py-36 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-6 leading-tight">
-              Want to Talk It{" "}
-              <span className="ig-gradient-text">Through First?</span>
+              Not Sure Which Plan{" "}
+              <span className="ig-gradient-text">Fits?</span>
             </h2>
             <p className="text-xl text-black/40 mb-12 max-w-xl mx-auto">
-              We&apos;ll walk you through the process and help you decide what
-              makes the most sense for your business.
+              No pressure. Let&apos;s talk through what makes sense for your
+              brand and where you&apos;re trying to go.
             </p>
             <Link
               href="https://www.flylisted.com/book-now"

@@ -5,63 +5,60 @@ import Link from "next/link";
 
 const packages = [
   {
-    name: "Foundation",
-    monthlyPrice: "$3,000",
-    annualPrice: "$2,699",
-    monthlyRaw: 3000,
-    annualRaw: 2699,
+    name: "Starter",
+    monthlyPrice: "$999",
+    annualPrice: "$799",
+    monthlyRaw: 999,
+    annualRaw: 799,
     tagline:
-      "Boost your exposure with our Video Starter package. Affordable and effective!",
+      "Your first step into consistent content. Start showing up and let your work do the talking.",
     featured: false,
     features: [
-      { text: "1-2 Core Content Assets Per Month", sub: "project feature, brand video, or client testimonial" },
-      { text: "Built for Sales, Not Just Social", sub: "usable across your website, proposals, and outreach" },
-      { text: "Half-Day Production Session", sub: "on-site filming of your team, projects, or process" },
-      { text: "Creative Direction + Messaging Support", sub: "we guide what to say and how to position it" },
-      { text: "Content Repurposed for Multiple Uses", sub: "cutdowns for social, website, and marketing" },
-      { text: "2 Rounds of Revisions Per Deliverable", sub: null },
-      { text: "Still Photography Included", sub: null },
+      { text: "3 Reels Per Month", sub: "filmed on-site, edited and ready to post" },
+      { text: "On-Site Filming Session", sub: "we come to you — quick and easy" },
+      { text: "Professional Editing + Sound Design", sub: null },
+      { text: "Creative Direction", sub: "we guide what to film and how to frame it" },
+      { text: "Optimized for Instagram, TikTok + Shorts", sub: null },
+      { text: "1 Round of Revisions", sub: null },
     ],
   },
   {
     name: "Growth",
-    monthlyPrice: "$4,500",
-    annualPrice: "$3,999",
-    monthlyRaw: 4500,
-    annualRaw: 3999,
-    tagline: "Content built to drive pipeline, not just presence.",
+    monthlyPrice: "$1,499",
+    annualPrice: "$1,199",
+    monthlyRaw: 1499,
+    annualRaw: 1199,
+    tagline: "Build trust and personalize your brand with content that connects.",
     featured: true,
     features: [
-      { text: "2-3 Core Content Assets", sub: "case studies, project features, testimonials" },
-      { text: "6-10 Supporting Content Pieces", sub: "cutdowns, social clips, distribution-ready variations" },
-      { text: "Full Production Session (or 2 half-days)", sub: null },
-      { text: "Monthly Strategy + Planning Call", sub: null },
-      { text: "Creative Direction + Messaging Support", sub: null },
-      { text: "Content Designed for Sales + Marketing Use", sub: "website, proposals, outreach, ads" },
-      { text: "Repurposed Across Multiple Channels", sub: null },
-      { text: "2 Rounds of Revisions Per Deliverable", sub: null },
+      { text: "5 Reels Per Month", sub: "filmed on-site, edited and ready to post" },
+      { text: "On-Site Filming Session", sub: "we come to you monthly" },
+      { text: "Professional Editing + Sound Design", sub: null },
+      { text: "Creative Direction + Messaging", sub: "we shape how your brand shows up" },
+      { text: "Optimized for All Platforms", sub: "Instagram, TikTok, Shorts, LinkedIn" },
+      { text: "Content Strategy Call", sub: "monthly alignment on what to capture" },
+      { text: "2 Rounds of Revisions", sub: null },
       { text: "Still Photography Included", sub: null },
     ],
   },
   {
     name: "Authority",
-    monthlyPrice: "$6,500",
-    annualPrice: "$5,999",
-    monthlyRaw: 6500,
-    annualRaw: 5999,
+    monthlyPrice: "$2,699",
+    annualPrice: "$2,299",
+    monthlyRaw: 2699,
+    annualRaw: 2299,
     tagline:
-      "A complete content system designed to position your company as the leader in your market.",
+      "Own your space. The volume and quality to make your brand impossible to ignore.",
     featured: false,
     features: [
-      { text: "3-5 Core Content Assets Per Month", sub: "case studies, project features, brand authority, leadership content" },
-      { text: "10-20 Supporting Content Pieces", sub: "short-form cutdowns, social clips, multi-platform variations" },
-      { text: "1-2 Full Production Days Per Month", sub: "capture multiple projects, team, and brand content at scale" },
-      { text: "Monthly Strategy + Quarterly Content Roadmap", sub: "planned around business goals, not random content" },
-      { text: "Advanced Creative Direction + Messaging", sub: "we shape how your company is perceived in the market" },
-      { text: "Content Built for Sales, Marketing, and Recruiting", sub: "website, proposals, outreach, ads, hiring" },
-      { text: "Multi-Channel Content System + Repurposing", sub: "maximize every shoot across all platforms" },
+      { text: "8 Reels Per Month", sub: "filmed on-site, edited and ready to post" },
+      { text: "Extended On-Site Filming", sub: "more time, more angles, more variety" },
+      { text: "Professional Editing + Sound Design", sub: null },
+      { text: "Advanced Creative Direction + Messaging", sub: "we position your brand as the go-to" },
+      { text: "Optimized for All Platforms", sub: "Instagram, TikTok, Shorts, LinkedIn" },
+      { text: "Monthly Strategy + Content Planning", sub: null },
       { text: "Priority Editing + Faster Turnaround", sub: null },
-      { text: "2 Rounds of Revisions Per Deliverable", sub: null },
+      { text: "2 Rounds of Revisions", sub: null },
       { text: "Still Photography Included", sub: null },
     ],
   },
@@ -302,12 +299,12 @@ export default function PricingSection() {
     <section id="packages" className="py-28 md:py-36 px-6 ig-pastel-bg">
       <div className="max-w-4xl mx-auto text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black mb-5 leading-tight">
-          Choose Your Level of{" "}
-          <span className="ig-gradient-text">Visibility</span>
+          Pick Your{" "}
+          <span className="ig-gradient-text">Plan</span>
         </h2>
         <p className="text-xl text-black/40 max-w-2xl mx-auto mb-12">
-          Whether you need to stay consistent or scale aggressively, we
-          structure content around your business goals.
+          Whether you&apos;re just getting started or ready to go all in, we&apos;ve
+          got a plan that fits.
         </p>
 
         {/* Toggle */}
