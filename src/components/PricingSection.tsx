@@ -165,11 +165,14 @@ function FlipChar({ char, delay, flipKey }: { char: string; delay: number; flipK
 }
 
 function FlipPrice({ price, cardIndex }: { price: string; cardIndex: number }) {
-  const maxLen = 6;
-  const padded = price.padStart(maxLen, " ");
+  // Strip $ and format digits only, we render $ separately
+  const digits = price.replace("$", "");
+  const maxLen = 5; // "3,099" is the longest digits portion
+  const padded = digits.padStart(maxLen, " ");
+  const charCount = maxLen;
   const [flipKey, setFlipKey] = useState(0);
   const [delays, setDelays] = useState<number[]>(() => {
-    const indices = Array.from({ length: maxLen }, (_, i) => i);
+    const indices = Array.from({ length: charCount }, (_, i) => i);
     const shuffled = seededShuffle(indices, cardIndex + 1);
     return shuffled.map((order) => order * 70);
   });
@@ -179,18 +182,17 @@ function FlipPrice({ price, cardIndex }: { price: string; cardIndex: number }) {
   useEffect(() => {
     if (prevPrice.current !== price) {
       prevPrice.current = price;
-      // Increment flipKey so ALL characters flip, even unchanged ones
       setFlipKey((k) => k + 1);
-      // Generate new random delays each time price changes
-      const indices = Array.from({ length: maxLen }, (_, i) => i);
+      const indices = Array.from({ length: charCount }, (_, i) => i);
       const seed = Date.now() + cardIndex;
       const shuffled = seededShuffle(indices, seed);
       setDelays(shuffled.map((order) => order * 70));
     }
-  }, [price, cardIndex]);
+  }, [price, cardIndex, charCount]);
 
   return (
     <span className="inline-flex" style={{ perspective: "600px" }}>
+      <span>$</span>
       {padded.split("").map((char, i) => (
         <FlipChar key={i} char={char} delay={delays[i] ?? i * 70} flipKey={flipKey} />
       ))}
