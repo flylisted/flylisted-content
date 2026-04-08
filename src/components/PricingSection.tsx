@@ -6,10 +6,10 @@ import Link from "next/link";
 const packages = [
   {
     name: "Starter",
-    monthlyPrice: "$999",
-    annualPrice: "$799",
-    monthlyRaw: 999,
-    annualRaw: 799,
+    monthlyPrice: "$1,199",
+    annualPrice: "$999",
+    monthlyRaw: 1199,
+    annualRaw: 999,
     tagline:
       "Your first step into consistent content. Start showing up and let your work do the talking.",
     featured: false,
@@ -24,10 +24,10 @@ const packages = [
   },
   {
     name: "Growth",
-    monthlyPrice: "$1,499",
-    annualPrice: "$1,199",
-    monthlyRaw: 1499,
-    annualRaw: 1199,
+    monthlyPrice: "$1,799",
+    annualPrice: "$1,499",
+    monthlyRaw: 1799,
+    annualRaw: 1499,
     tagline: "Build trust and personalize your brand with content that connects.",
     featured: true,
     features: [
@@ -43,10 +43,10 @@ const packages = [
   },
   {
     name: "Authority",
-    monthlyPrice: "$2,699",
-    annualPrice: "$2,299",
-    monthlyRaw: 2699,
-    annualRaw: 2299,
+    monthlyPrice: "$3,099",
+    annualPrice: "$2,699",
+    monthlyRaw: 3099,
+    annualRaw: 2699,
     tagline:
       "Own your space. The volume and quality to make your brand impossible to ignore.",
     featured: false,
