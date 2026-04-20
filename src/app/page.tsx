@@ -10,6 +10,18 @@ const videos = {
   migis: "https://dl.dropboxusercontent.com/scl/fi/xk11b9za79qa8ieoz9shr/Migis-Photos-Video-Harkness-Inn_Loop-Video.mov?rlkey=o8v7dcttt4wz4awnqgfm8yq2l&st=rjowcg5g",
 };
 
+const reels = {
+  atlantic: "https://dl.dropboxusercontent.com/scl/fi/jsl4b7e8vue252m0c5rqb/3052-N-Atlantic-Blvd-Fort-Lauderdale.mp4?rlkey=gkku04hoo4qzrhp475l0t9aau&st=697b2cpb",
+  bahia: "https://dl.dropboxusercontent.com/scl/fi/sechh8n0ovil6courpyfb/Bahia-Dr-USA-Teaser-Vertical.m4v?rlkey=9r01vw0rxywn2rawgvzcpep7w&st=o5er37x7",
+  beachSold: "https://dl.dropboxusercontent.com/scl/fi/by4uacbxsr8wkfyjrey0e/Beach-House-Sold-2.mp4?rlkey=w3euvvbr8tkmlxl1hr82f5ohe&st=2uywzwi4",
+  nilesTestimonial: "https://dl.dropboxusercontent.com/scl/fi/173z4teg0yhsmr6fyed27/Jared-Niles-6897-V1.mp4?rlkey=p12z1ake1k5tid3uanzmm7yd8&st=1zj2hd0t",
+  nilesAgent: "https://dl.dropboxusercontent.com/scl/fi/f6izjtxubj9ehc1lqoote/Jared-Niles-6916-V1.mp4?rlkey=kb5ucahk310o91o8gcvwrif9a&st=lx1rstnr",
+  cregan: "https://dl.dropboxusercontent.com/scl/fi/nkqjhslagz2in1q0yylju/John-Cregan-1571-V1.mov?rlkey=z9p1e7vdqazovskw481kwza0z&st=54rmi7gz",
+  elmesDetails: "https://dl.dropboxusercontent.com/scl/fi/8de2qjb3o22e3bsa63lag/The-Elmes-Group-656-V1.mp4?rlkey=qj5qa8q0lf8iclzb1o40vily9&st=ud0od7z9",
+  elmesPoolside: "https://dl.dropboxusercontent.com/scl/fi/vjkrvmbkug2xj2qpbqsjd/The-Elmes-Group-6785-CT3-V1.mp4?rlkey=lk4c3ewwdx0sp650yfg7ww7is&st=7znq3o0l",
+  elmesKitchen: "https://dl.dropboxusercontent.com/scl/fi/5zegs2vso3ndgk4o4t3ma/The-Elmes-Group-6785-CT5-V1.mp4?rlkey=reye6br0zjwfsvved16kocdel&st=8kblsm1o",
+};
+
 const howItWorks = [
   { step: "01", title: "Book", description: "Pick your plan and lock in your monthly shoot date." },
   { step: "02", title: "Film", description: "We come to you and capture everything on-site — quick and easy." },
@@ -35,10 +47,27 @@ function VideoShowcase({ src, className = "" }: { src: string; className?: strin
         muted
         loop
         playsInline
+        preload="metadata"
         className="w-full h-full object-cover"
       >
         <source src={src} />
       </video>
+    </div>
+  );
+}
+
+function ReelGroup({ srcs }: { srcs: string[] }) {
+  const layout =
+    srcs.length === 1
+      ? "max-w-xs mx-auto"
+      : srcs.length === 2
+      ? "grid grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto"
+      : "grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto";
+  return (
+    <div className={layout}>
+      {srcs.map((src) => (
+        <VideoShowcase key={src} src={src} className="aspect-[9/16]" />
+      ))}
     </div>
   );
 }
@@ -109,9 +138,10 @@ export default function Home() {
               <p>But creating content? That keeps falling to the bottom of the list.</p>
               <p>And when you do post — it feels rushed, random, or just not you.</p>
             </div>
-            <p className="text-2xl md:text-3xl font-semibold text-black tracking-tight">
+            <p className="text-2xl md:text-3xl font-semibold text-black tracking-tight mb-16">
               Meanwhile, the people showing up consistently are getting all the attention.
             </p>
+            <ReelGroup srcs={[reels.bahia]} />
           </div>
         </section>
 
@@ -177,6 +207,9 @@ export default function Home() {
               You do your thing.{" "}
               <span className="ig-gradient-text">We make sure people see it.</span>
             </p>
+          </div>
+          <div className="mt-20">
+            <ReelGroup srcs={[reels.elmesPoolside, reels.elmesKitchen, reels.nilesAgent]} />
           </div>
         </section>
 
@@ -247,6 +280,11 @@ export default function Home() {
             <div className="mt-16 max-w-3xl mx-auto">
               <VideoShowcase src={videos.migis} className="aspect-video" />
             </div>
+
+            {/* Variety of recent work */}
+            <div className="mt-8">
+              <ReelGroup srcs={[reels.atlantic, reels.cregan, reels.elmesDetails]} />
+            </div>
           </div>
         </section>
 
@@ -278,7 +316,7 @@ export default function Home() {
               What You{" "}
               <span className="ig-gradient-text">Actually Get</span>
             </h2>
-            <div className="space-y-6 max-w-xl mx-auto">
+            <div className="space-y-6 max-w-xl mx-auto mb-16">
               {results.map((item) => (
                 <div key={item} className="flex items-start gap-4">
                   <CheckIcon className="mt-1" />
@@ -286,6 +324,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <ReelGroup srcs={[reels.beachSold, reels.nilesTestimonial]} />
           </div>
         </section>
 
